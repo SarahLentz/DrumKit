@@ -21,7 +21,7 @@ for (i=0;i < document.querySelectorAll(".drum").length; i++) {
 function makeSound(key) {   // function(<function name>(input parameter))
   switch(key){              // Run switch statement using the input parameter.
     case "w":
-      var audio = new Audio('sounds/tom-1.mp3');
+      var audio = new Audio('tom-1.mp3');
       audio.play();
     break;
     case "a":
