@@ -10,12 +10,14 @@ for (i=0;i < document.querySelectorAll(".drum").length; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", function() {
     var buttonInnerHTML = this.innerHTML;
     makeSound(buttonInnerHTML);   // Use the variable created above to turn the innerHTML of the ".drum" button clicked on into the input parameter for the makeSound function.
+    buttonAnimation(buttonInnerHTML); // Do the same to call the buttonAnimation function, triggered by the same action.
   });
 }
 
 // *** Detect keyboard presses corresponding to drum letters. ***
   document.addEventListener("keydown",function(event) {
     makeSound(event.key);   // Use the event detected (the key press) to identify the key value and use it as the input parameter if one of the letter keys (for the drums) is pushed.
+    buttonAnimation(event.key); // Do the same to call the buttonAnimation function, triggered by the same action.
   });
 
 function makeSound(key) {   // function(<function name>(input parameter))
@@ -52,4 +54,12 @@ function makeSound(key) {   // function(<function name>(input parameter))
       console.log(buttonInnerHTML);
     }
 
+  }
+
+ function buttonAnimation(currentKey){
+    var activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.add("pressed");
+    setTimeout(function(){
+      activeButton.classList.remove("pressed");
+    }, 100);
   }
